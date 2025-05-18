@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  webjobad:
+    build: .
+    #ports:
+      #- "12000:12000"
+    volumes:
+      # Mount the application code for development (optional, remove for production)
+      # If you make changes to the code, you'll need to rebuild the image
+      # or ensure your Dockerfile/CMD handles hot-reloading if desired.
+      # For simple Flask `run`, changes to Python files might not auto-reload without `debug=True`
+      # and potentially a dev server that watches files.
+      # - .:/app 
+    env_file:
+      - .env # Loads environment variables from .env file
+    environment:
+      # You can also set environment variables directly here
+      # FLASK_ENV: development # Or production
+      PYTHONUNBUFFERED: 1 # Ensures print statements and logs are sent straight to terminal
+    networks:
+      - app-network  # Attach to the same network as the reverse proxy
+
+networks:
+  app-network:
+    external: true  # Use the existing network from Nginx Proxy Manager

@@ -1,0 +1,39 @@
+Senior Full Stack Developer
+
+Job Description:
+We are seeking a highly skilled Senior Full Stack Developer to join our dynamic engineering team. The ideal candidate will be responsible for developing and implementing front-end and back-end web applications, ensuring high performance and responsiveness to web requests. You will coordinate with the rest of the team working on different layers of the infrastructure.
+
+Responsibilities:
+• Design, develop, and maintain efficient, reusable, and reliable code
+• Integration of data storage solutions including databases, key-value stores, blob stores, etc.
+• Implementation of security and data protection
+• Integration of user-facing elements developed by front-end developers with server-side logic
+• Optimization of the application for maximum speed and scalability
+• Implementation of robust CI/CD pipelines and DevOps practices
+• Collaborate with cross-functional teams to define, design, and ship new features
+
+Requirements:
+• 5+ years of experience in full stack development
+• Proficiency in JavaScript, TypeScript, HTML, CSS, and one or more front-end frameworks (React, Angular, Vue.js)
+• Proficiency in server-side languages such as Python, Ruby, Java, PHP, or .NET
+• Experience with database technology such as MySQL, MongoDB, PostgreSQL
+• Familiarity with AWS, Azure, or GCP cloud services
+• Understanding of fundamental design principles behind a scalable application
+• Experience with Agile development methodologies
+• Strong problem-solving skills and attention to detail
+• Excellent verbal and written communication skills
+• BS/MS degree in Computer Science, Engineering or a related field
+
+Nice to Have:
+• Experience with microservices architecture
+• Knowledge of containerization technologies (Docker, Kubernetes)
+• Experience with GraphQL
+• Understanding of serverless architecture
+• Experience with real-time communication protocols
+
+Compensation:
+• Competitive salary based on experience
+• Comprehensive benefits package including health, dental, and vision insurance
+• 401(k) matching
+• Flexible work arrangements
+• Professional development opportunities

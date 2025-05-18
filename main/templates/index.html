@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobSimplify - Translate Job Descriptions into Plain Language</title>
+    <meta name="description" content="JobSimplify helps you understand job descriptions in simpler terms" />
+    <meta name="author" content="JobSimplify" />
+    <link rel="icon" href="{{ url_for('static', filename='thumb_square_800x800.avif') }}" type="image/avif">
+
+    <meta property="og:title" content="JobSimplify - Translate Job Descriptions into Plain Language" />
+    <meta property="og:description" content="JobSimplify helps you understand job descriptions in simpler terms" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+<!-- Custom styles -->
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-50">
+    <header class="border-b border-gray-200 bg-white py-4">
+      <div class="container mx-auto flex items-center justify-between px-4">
+        <div class="flex items-center space-x-2">
+          <!-- Languages icon (inline SVG replacing Lucide React component) -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-purple-300">
+            <path d="m5 8 6 6"></path>
+            <path d="m4 14 6-6 2-3"></path>
+            <path d="M2 5h12"></path>
+            <path d="M7 2h1"></path>
+            <path d="m22 22-5-10-5 10"></path>
+            <path d="M14 18h6"></path>
+          </svg>
+          <h1 class="text-xl font-bold text-gray-800">JobSimplify</h1>
+        </div>
+        <div class="text-sm text-gray-500">
+          Your job description translator
+        </div>
+      </div>
+    </header>
+    
+    <main class="flex-1 container mx-auto px-4 py-8">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-center text-gray-800">Translate Job Descriptions into Plain Language</h2>
+        <p class="text-center text-gray-600 mt-2 max-w-2xl mx-auto">
+          Paste any job listing and our AI will translate it into clear, actionable insights 
+          about what the job really involves and how to prepare for it.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Job Description Input -->
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm h-full">
+          <div class="p-6 pt-6">
+            <div class="flex flex-col h-full">
+              <div class="flex items-center justify-between mb-2">
+                <h2 class="text-lg font-medium">Job Description</h2>
+                <button id="clearButton" class="inline-flex items-center justify-center text-xs rounded-md border border-input bg-background px-2 py-1 shadow-sm hover:bg-gray-100">
+                  Clear
+                </button>
+              </div>
+              <textarea 
+                id="jobDescriptionInput" 
+                placeholder="Paste the job description here..." 
+                class="flex-1 min-h-[300px] resize-none mb-4 rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              ></textarea>
+              <button 
+                id="translateButton" 
+                class="w-full bg-purple-300 hover:bg-purple-400 inline-flex items-center justify-center rounded-md text-sm font-medium text-black py-2 px-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled
+              >
+                Simplify This Job Description
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Simplified Output -->
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm h-full">
+          <div class="p-6 pt-6">
+            <div class="flex items-center justify-between mb-2">
+              <h2 class="text-lg font-medium">Simplified Job Description</h2>
+              <button id="copyButton" class="inline-flex items-center justify-center text-xs rounded-md border border-input bg-background px-2 py-1 shadow-sm hover:bg-gray-100 disabled:opacity-50" disabled>
+                Copy
+              </button>
+            </div>
+            <div id="outputContainer" class="min-h-[300px] p-3 rounded-md border border-input bg-gray-50 relative flex items-center justify-center">
+              <!-- Loading Indicator (initially hidden, absolutely positioned to overlay) -->
+              <div id="loadingIndicator" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-gray-50 z-10">
+                <div class="relative h-4 w-full max-w-xs overflow-hidden rounded-full bg-gray-200">
+                  <div class="h-full w-full flex-1 bg-purple-500 animate-pulse"></div>
+                </div>
+                <p class="text-sm text-center text-gray-500 mt-2">Translating job description...</p>
+              </div>
+              <!-- Placeholder (initially visible) -->
+              <div id="outputPlaceholder" class="flex flex-col items-center justify-center text-gray-400">
+                <p>Simplified job description will appear here</p>
+              </div>
+              <!-- Actual Content (initially hidden) -->
+              <div id="outputContent" class="hidden whitespace-pre-wrap text-sm w-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer class="border-t border-gray-200 py-4 mt-4">
+      <div class="container mx-auto px-4">
+        <div class="text-center text-sm text-gray-500">
+          <p>JobSimplify helps you understand job descriptions in simpler terms</p>
+          <p class="mt-1">© 2025 JobSimplify. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
